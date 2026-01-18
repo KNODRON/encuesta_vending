@@ -74,3 +74,59 @@ a{color:inherit}
 .mt8{margin-top:8px}
 .mt12{margin-top:12px}
 .hidden{display:none}
+
+/* ====== OVERRIDE TEMA CLARO (Opción A) ====== */
+
+/* Topbar (arriba) */
+.topbar{
+  background: rgba(243,246,250,.92) !important; /* mismo tono del fondo, pero con blur */
+  border-bottom: 1px solid var(--line) !important;
+}
+
+/* Botones base */
+.btn{
+  background:#FFFFFF !important;
+  color:var(--text) !important;
+  border:1px solid var(--line) !important;
+}
+.btn--ghost{
+  background: transparent !important;
+}
+.btn--primary{
+  background: var(--brand) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(0,0,0,.08) !important;
+}
+.btn--danger{
+  background: var(--danger) !important;
+  color:#FFFFFF !important;
+  border-color: rgba(0,0,0,.08) !important;
+}
+
+/* Inputs */
+.field input,.field select{
+  background:#FFFFFF !important;
+  color:var(--text) !important;
+  border:1px solid var(--line) !important;
+}
+
+/* Chips/opciones (radio/checkbox) - este es el “culpable” */
+.choices label{
+  background:#FFFFFF !important;
+  color:var(--text) !important;
+  border:1px solid var(--line) !important;
+}
+
+/* Tabla */
+.tablewrap{
+  border:1px solid var(--line) !important;
+}
+.table{
+  background:#FFFFFF !important;
+}
+.table th,.table td{
+  border-bottom:1px solid var(--line) !important;
+}
+.table th{
+  color: var(--muted) !important;
+}
