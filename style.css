@@ -28,13 +28,16 @@ a{color:inherit}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 @media (max-width:760px){.grid{grid-template-columns:1fr}}
 
-.field{display:block}
-.field span{display:block;font-size:12px;margin:0 0 6px;color:var(--muted)}
 .field input,.field select{
-  width:100%;padding:10px 12px;border-radius:10px;
-  border:1px solid var(--line);background:#0b100e;color:var(--text);
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background:#FFFFFF;
+  color:var(--text);
   outline:none;
 }
+
 .field input:focus,.field select:focus{border-color:rgba(26,163,107,.7);box-shadow:0 0 0 3px rgba(26,163,107,.18)}
 
 .choices{display:flex;flex-wrap:wrap;gap:10px}
@@ -43,11 +46,21 @@ a{color:inherit}
 @media (max-width:760px){.choices--grid{grid-template-columns:1fr}}
 
 .btn{
-  border:1px solid var(--line);background:#0b100e;color:var(--text);
-  padding:10px 12px;border-radius:12px;cursor:pointer
+  border:1px solid var(--line);
+  background:#FFFFFF;
+  color:var(--text);
+  padding:10px 12px;
+  border-radius:12px;
+  cursor:pointer;
 }
-.btn--primary{background:var(--brand);border-color:rgba(0,0,0,.2);color:#07110c;font-weight:700}
-.btn--ghost{background:transparent}
+.btn--ghost{ background:transparent; }
+.btn--primary{
+  background:var(--brand);
+  border-color:rgba(0,0,0,.08);
+  color:#FFFFFF;
+  font-weight:700;
+}
+
 .btn--danger{background:var(--danger);border-color:rgba(0,0,0,.2);color:#fff;font-weight:700}
 
 .row{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
