@@ -257,3 +257,40 @@ a{ color:inherit; }
 .mt8{ margin-top:8px; }
 .mt12{ margin-top:12px; }
 .hidden{ display:none; }
+
+/* ====== Ajustes Mobile ====== */
+@media (max-width: 480px){
+
+  .wrap{ padding:12px; }
+
+  /* Topbar más compacto */
+  .topbar h1{ font-size:18px; }
+  .topbar p{ font-size:12px; }
+
+  /* Botones más “tocables” */
+  .btn{
+    padding:12px 14px;
+    border-radius:14px;
+  }
+
+  /* Cards con menos padding para aprovechar pantalla */
+  .card{
+    padding:14px;
+    border-radius:14px;
+  }
+
+  /* Chips: que no queden en 2 columnas apretadas */
+  .choices--grid{
+    grid-template-columns: 1fr;
+  }
+
+  /* Chips un poco más “altura dedo” */
+  .choices label{
+    padding:10px 12px;
+  }
+
+  /* Tabla: que no obligue a scroll horizontal incómodo */
+  .table{
+    min-width: 620px; /* baja un poco el mínimo */
+  }
+}
