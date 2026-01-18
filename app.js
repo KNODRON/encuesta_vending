@@ -46,7 +46,6 @@ function init() {
   $("btnGuardarBase").addEventListener("click", guardarEnBase);
   $("btnBorrarBase").addEventListener("click", borrarBase);
 
-  $("btnCSV").addEventListener("click", exportarCSV);
   $("btnPDF").addEventListener("click", exportarPDFResumen);
 
   renderTabla();
