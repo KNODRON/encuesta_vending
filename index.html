@@ -3,140 +3,214 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Encuesta Vending - Edificios</title>
-  <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="style.css" />
+  <title>Encuesta Vending</title>
+  <meta name="theme-color" content="#0b3d2e" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <header class="topbar">
-    <div class="title">
-      <h1>Encuesta Vending</h1>
-      <p>Levantamiento rápido por edificio</p>
-    </div>
-    <div class="actions">
-      <button id="btnNew" class="btn secondary" type="button">Nueva</button>
-      <button id="btnSave" class="btn" type="button">Guardar</button>
+    <div class="wrap topbar__inner">
+      <div>
+        <h1>Encuesta Vending</h1>
+        <p class="muted">Levantamiento rápido por edificio</p>
+      </div>
+      <div class="topbar__actions">
+        <button id="btnNueva" class="btn btn--ghost" type="button">Nueva</button>
+        <button id="btnGuardar" class="btn btn--primary" type="button">Guardar</button>
+      </div>
     </div>
   </header>
 
-  <main class="container">
+  <main class="wrap">
     <section class="card">
       <h2>Identificación</h2>
 
       <div class="grid">
-        <label>
-          Edificio / Condominio
-          <input id="buildingName" type="text" placeholder="Ej: Edificio Alameda 123" />
+        <label class="field">
+          <span>Edificio / Condominio <b class="req">*</b></span>
+          <input id="edificio" type="text" placeholder="Ej. Condominio Los Robles" autocomplete="organization" />
         </label>
 
-        <label>
-          Dirección (opcional)
-          <input id="buildingAddress" type="text" placeholder="Ej: Alameda 123, Santiago" />
+        <label class="field">
+          <span>Dirección (opcional)</span>
+          <input id="direccion" type="text" placeholder="Calle 1234" autocomplete="street-address" />
         </label>
 
-        <label>
-          Entrevistado (Administrador/Conserje)
-          <input id="interviewee" type="text" placeholder="Nombre y cargo" />
+        <label class="field">
+          <span>Comuna</span>
+          <input id="comuna" type="text" placeholder="Ej. Santiago" autocomplete="address-level2" />
         </label>
 
-        <label>
-          Teléfono / contacto (opcional)
-          <input id="contact" type="tel" placeholder="+56 9 ..." />
+        <label class="field">
+          <span>Entrevistado (Administrador/Conserje) <b class="req">*</b></span>
+          <input id="entrevistado" type="text" placeholder="Nombre y cargo" autocomplete="name" />
         </label>
 
-        <label>
-          Fecha
-          <input id="date" type="date" />
+        <label class="field">
+          <span>Teléfono / contacto (opcional)</span>
+          <input id="telefono" type="tel" placeholder="+56 9 1234 5678" autocomplete="tel" />
         </label>
 
-        <label>
-          N° Departamentos (estimado)
-          <input id="units" type="number" inputmode="numeric" min="0" placeholder="Ej: 120" />
+        <label class="field">
+          <span>Fecha <b class="req">*</b></span>
+          <input id="fecha" type="date" />
+        </label>
+
+        <label class="field">
+          <span>N° Departamentos (estimado)</span>
+          <input id="departamentos" type="number" min="0" step="1" placeholder="Ej. 120" inputmode="numeric" />
+        </label>
+
+        <label class="field">
+          <span>Horario conserjería</span>
+          <select id="conserjeria">
+            <option value="">Seleccionar</option>
+            <option>24/7</option>
+            <option>Parcial</option>
+            <option>Sin conserje</option>
+            <option>No sabe</option>
+          </select>
         </label>
       </div>
     </section>
 
     <section class="card">
-      <h2>Encuesta (mini)</h2>
+      <h2>Encuesta</h2>
 
       <div class="q">
-        <p>1) ¿Compraría productos de higiene en el edificio por conveniencia?</p>
-        <div class="choices">
-          <label><input type="radio" name="q1" value="Sí" /> Sí</label>
-          <label><input type="radio" name="q1" value="Tal vez" /> Tal vez</label>
-          <label><input type="radio" name="q1" value="No" /> No</label>
+        <h3>1) ¿Compraría productos de higiene en el edificio por conveniencia? <b class="req">*</b></h3>
+        <div class="choices" id="q1">
+          <label><input type="radio" name="q1" value="Sí"> Sí</label>
+          <label><input type="radio" name="q1" value="Tal vez"> Tal vez</label>
+          <label><input type="radio" name="q1" value="No"> No</label>
         </div>
       </div>
 
       <div class="q">
-        <p>2) ¿Qué productos compraría? (marcar todos los que apliquen)</p>
-        <div class="checks">
-          <label><input type="checkbox" value="Toallas higiénicas" class="q2" /> Toallas higiénicas</label>
-          <label><input type="checkbox" value="Preservativos" class="q2" /> Preservativos</label>
-          <label><input type="checkbox" value="Toallas húmedas" class="q2" /> Toallas húmedas</label>
-          <label><input type="checkbox" value="Shampoo / acond." class="q2" /> Shampoo / acond.</label>
-          <label><input type="checkbox" value="Pasta / cepillo" class="q2" /> Pasta / cepillo</label>
-          <label><input type="checkbox" value="Afeitadoras" class="q2" /> Afeitadoras</label>
-          <label><input type="checkbox" value="Papel higiénico" class="q2" /> Papel higiénico</label>
-          <label><input type="checkbox" value="Desodorante" class="q2" /> Desodorante</label>
-          <label>
-            <input type="checkbox" value="Otro" class="q2OtherToggle" /> Otro
-          </label>
-          <input id="q2OtherText" type="text" placeholder="Especificar otro..." disabled />
+        <h3>2) ¿Qué productos compraría? (marcar todos los que apliquen)</h3>
+        <div class="choices choices--grid" id="q2">
+          <label><input type="checkbox" value="Toallas higiénicas"> Toallas higiénicas</label>
+          <label><input type="checkbox" value="Preservativos"> Preservativos</label>
+          <label><input type="checkbox" value="Toallas húmedas"> Toallas húmedas</label>
+          <label><input type="checkbox" value="Shampoo / acond."> Shampoo / acond.</label>
+          <label><input type="checkbox" value="Pasta / cepillo"> Pasta / cepillo</label>
+          <label><input type="checkbox" value="Afeitadoras"> Afeitadoras</label>
+          <label><input type="checkbox" value="Papel higiénico"> Papel higiénico</label>
+          <label><input type="checkbox" value="Desodorante"> Desodorante</label>
+          <label><input id="q2_otro_chk" type="checkbox" value="Otro"> Otro</label>
+        </div>
+        <div class="mt8">
+          <input id="q2_otro_txt" type="text" class="hidden" placeholder="Especificar 'Otro'..." />
         </div>
       </div>
 
       <div class="q">
-        <p>3) ¿En qué horario cree que compraría más?</p>
-        <div class="choices">
-          <label><input type="radio" name="q3" value="Noche" /> Noche</label>
-          <label><input type="radio" name="q3" value="Fin de semana" /> Fin de semana</label>
-          <label><input type="radio" name="q3" value="Emergencias" /> Emergencias</label>
-          <label><input type="radio" name="q3" value="Indistinto" /> Indistinto</label>
+        <h3>3) ¿En qué horario cree que compraría más?</h3>
+        <div class="choices" id="q3">
+          <label><input type="radio" name="q3" value="Noche"> Noche</label>
+          <label><input type="radio" name="q3" value="Fin de semana"> Fin de semana</label>
+          <label><input type="radio" name="q3" value="Emergencias"> Emergencias</label>
+          <label><input type="radio" name="q3" value="Indistinto"> Indistinto</label>
         </div>
       </div>
 
       <div class="q">
-        <p>4) ¿Prefiere pago electrónico?</p>
-        <div class="choices">
-          <label><input type="radio" name="q4" value="Sí" /> Sí</label>
-          <label><input type="radio" name="q4" value="No" /> No</label>
-          <label><input type="radio" name="q4" value="Indiferente" /> Indiferente</label>
+        <h3>4) ¿Prefiere pago electrónico? <b class="req">*</b></h3>
+        <div class="choices" id="q4">
+          <label><input type="radio" name="q4" value="Sí"> Sí</label>
+          <label><input type="radio" name="q4" value="No"> No</label>
+          <label><input type="radio" name="q4" value="Indiferente"> Indiferente</label>
         </div>
       </div>
 
       <div class="q">
-        <p>5) ¿Le parece bien que exista una vending en el edificio?</p>
-        <div class="choices">
-          <label><input type="radio" name="q5" value="Sí" /> Sí</label>
-          <label><input type="radio" name="q5" value="No" /> No</label>
-          <label><input type="radio" name="q5" value="Depende" /> Depende</label>
+        <h3>5) ¿Le parece bien que exista una vending en el edificio? <b class="req">*</b></h3>
+        <div class="choices" id="q5">
+          <label><input type="radio" name="q5" value="Sí"> Sí</label>
+          <label><input type="radio" name="q5" value="No"> No</label>
+          <label><input type="radio" name="q5" value="Depende"> Depende</label>
         </div>
       </div>
 
-      <div class="q">
-        <p>Comentarios / Observaciones (opcional)</p>
-        <input id="notes" type="text" placeholder="Ej: Hay minimarket cerca / residentes jóvenes / etc." />
+      <hr class="sep" />
+
+      <div class="grid">
+        <label class="field">
+          <span>¿Quién autoriza? (si aplica)</span>
+          <select id="autoriza">
+            <option value="">Seleccionar</option>
+            <option>Administrador</option>
+            <option>Comité</option>
+            <option>Asamblea</option>
+            <option>Inmobiliaria</option>
+            <option>No sabe</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Ubicación sugerida</span>
+          <input id="ubicacion" type="text" placeholder="Ej. Hall acceso / estacionamientos" />
+        </label>
+
+        <label class="field">
+          <span>¿Hay electricidad disponible?</span>
+          <select id="electricidad">
+            <option value="">Seleccionar</option>
+            <option>Sí</option>
+            <option>No</option>
+            <option>No sabe</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>¿Conectividad (Wi-Fi / 4G) en ese punto?</span>
+          <select id="conectividad">
+            <option value="">Seleccionar</option>
+            <option>Sí</option>
+            <option>No</option>
+            <option>No sabe</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Condición del edificio (comisión)</span>
+          <select id="comision">
+            <option value="">Seleccionar</option>
+            <option>% de utilidad</option>
+            <option>Monto fijo mensual</option>
+            <option>Sin comisión</option>
+            <option>Otro / por definir</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Valor comisión (si aplica)</span>
+          <input id="comision_valor" type="text" placeholder="Ej. 10% / $30.000" />
+        </label>
       </div>
+
+      <label class="field mt12">
+        <span>Comentarios / Observaciones (opcional)</span>
+        <input id="comentarios" type="text" placeholder="Objeciones, condiciones, sugerencias..." />
+      </label>
     </section>
 
     <section class="card">
       <h2>Base de encuestas guardadas</h2>
 
       <div class="row">
-        <button id="btnAddToDB" class="btn" type="button">Guardar entrevista en la base</button>
-        <button id="btnClearDB" class="btn danger" type="button">Borrar base (cuidado)</button>
+        <button id="btnGuardarBase" class="btn" type="button">Guardar entrevista en la base</button>
+        <button id="btnBorrarBase" class="btn btn--danger" type="button">Borrar base (cuidado)</button>
       </div>
 
       <div class="row">
-        <button id="btnExportCSV" class="btn secondary" type="button">Exportar CSV (Excel)</button>
-        <button id="btnExportPDF" class="btn secondary" type="button">Exportar PDF (resumen)</button>
+        <button id="btnCSV" class="btn btn--ghost" type="button">Exportar CSV (Excel)</button>
+        <button id="btnPDF" class="btn btn--ghost" type="button">Exportar PDF (resumen)</button>
       </div>
 
-      <div id="status" class="status"></div>
-
-      <div class="tableWrap">
-        <table id="table">
+      <div class="tablewrap">
+        <table class="table" id="tabla">
           <thead>
             <tr>
               <th>Fecha</th>
@@ -147,14 +221,22 @@
               <th>Acciones</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody id="tbody"></tbody>
         </table>
       </div>
     </section>
+
+    <footer class="footer muted">
+      <small>Datos guardados localmente en este dispositivo (localStorage).</small>
+    </footer>
   </main>
 
-  <!-- jsPDF desde CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
-  <script src="app.js"></script>
+  <script src="./app.js"></script>
+  <script>
+    // Registrar service worker (si existe)
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./service-worker.js").catch(()=>{});
+    }
+  </script>
 </body>
 </html>
